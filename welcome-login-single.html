@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ยินดีต้อนรับ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#04060d;--blue:#1e90ff;--blue2:#0a4fa8;--text:#e8f1ff;--mute:#7f93b5;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{background:radial-gradient(ellipse at 50% 0%,#0b2a5c 0%,var(--bg) 60%);color:var(--text);font-family:system-ui,"Noto Sans Thai",sans-serif;display:flex;align-items:center;justify-content:center}
+.screen{display:none;width:100%;max-width:380px;padding:24px;text-align:center;animation:in .4s ease}
+.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+h1{font-size:28px;margin:12px 0 6px;letter-spacing:.5px}
+p{color:var(--mute);margin:0 0 24px;font-size:15px}
+.logo{width:150px;height:150px;margin:0 auto}
+.remember{display:flex;align-items:center;justify-content:center;gap:10px;background:none;border:0;color:var(--text);font-size:16px;margin:0 auto 22px;padding:8px;cursor:pointer;font-family:inherit}
+.remember svg{width:28px;height:28px}
+.tick{opacity:0;transition:opacity .15s}
+.remember[aria-checked="true"] .tick{opacity:1}
+.remember[aria-checked="true"] .box{fill:var(--blue2)}
+.go{width:100%;height:52px;border:0;border-radius:14px;background:linear-gradient(90deg,var(--blue2),var(--blue));color:#fff;font-size:17px;font-weight:600;font-family:inherit;cursor:pointer;box-shadow:0 0 24px rgba(30,144,255,.35)}
+.go:active{transform:scale(.98)}
+.opt{display:block;width:100%;padding:0;border:0;background:none;margin:0 0 14px;cursor:pointer}
+.opt svg{display:block;width:100%;height:auto}
+.opt.dead{cursor:not-allowed}
+.opt:not(.dead):active{transform:scale(.98)}
+#msg{min-height:22px;margin-top:10px;font-size:14px;color:var(--blue)}
+#msg.err{color:#ff6b6b}
+.back{background:none;border:0;color:var(--mute);margin-top:14px;font-size:14px;font-family:inherit;cursor:pointer}
+.avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 8px;display:block;border:3px solid var(--blue);object-fit:cover;background:#06101f}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="tape" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#f7c600"/>
+      <rect width="12" height="24" fill="#141414"/>
+    </pattern>
+    <filter id="sh" x="-5%" y="-30%" width="110%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity=".8"/>
+    </filter>
+    <linearGradient id="btnbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d2a55"/><stop offset="1" stop-color="#06101f"/>
+    </linearGradient>
+    <linearGradient id="btnline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5cb8ff"/><stop offset="1" stop-color="#1e90ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- Screen 1: welcome -->
+<section class="screen on" id="s1">
+  <svg class="logo" viewBox="0 0 160 160" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#1e90ff" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#1e90ff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8fd3ff"/><stop offset="1" stop-color="#0a4fa8"/>
+      </linearGradient>
+      <radialGradient id="core" cx="40%" cy="35%" r="75%">
+        <stop offset="0" stop-color="#14396f"/><stop offset="1" stop-color="#050b17"/>
+      </radialGradient>
+    </defs>
+    <circle cx="80" cy="80" r="78" fill="url(#glow)"/>
+    <circle cx="80" cy="80" r="62" fill="none" stroke="#1e90ff" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="3 7"/>
+    <circle cx="80" cy="80" r="50" fill="url(#core)" stroke="url(#ring)" stroke-width="5"/>
+    <path d="M58 82 L74 98 L104 62" fill="none" stroke="#000" stroke-opacity=".4" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 3)"/>
+    <path d="M58 82 L74 98 L104 62" fill="none" stroke="#9fdcff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#8fd3ff">
+      <path d="M128 30 l2.5 7 7 2.5 -7 2.5 -2.5 7 -2.5 -7 -7 -2.5 7 -2.5z"/>
+      <path d="M30 118 l1.8 5 5 1.8 -5 1.8 -1.8 5 -1.8 -5 -5 -1.8 5 -1.8z" opacity=".7"/>
+      <circle cx="26" cy="42" r="2.5" opacity=".6"/><circle cx="136" cy="112" r="2" opacity=".5"/>
+    </g>
+  </svg>
+  <h1>ยินดีต้อนรับ</h1>
+  <p>ดีใจที่ได้เจอกันอีกครั้ง</p>
+  <button class="remember" id="rem" role="checkbox" aria-checked="false">
+    <svg viewBox="0 0 28 28" aria-hidden="true">
+      <rect class="box" x="2" y="2" width="24" height="24" rx="7" fill="#06101f" stroke="#1e90ff" stroke-width="2.5"/>
+      <path class="tick" d="M8 14.5 L12.5 19 L20 9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>จำบัญชีนี้ไหม</span>
+  </button>
+  <button class="go" id="next">ต่อไป</button>
+</section>
+
+<!-- Screen 2: sign in -->
+<section class="screen" id="s2">
+  <h1>เข้าสู่ระบบ</h1>
+  <p>เลือกบัญชีที่ต้องการใช้งาน</p>
+
+  <button class="opt dead" aria-disabled="true" aria-label="บัญชี Google ใช้งานไม่ได้">
+    <svg viewBox="0 0 320 76">
+      <rect width="320" height="76" rx="14" fill="#000"/>
+      <g opacity=".55"><g transform="translate(40 30) scale(1.55)" fill="none" stroke-width="4.2" stroke-linecap="butt">
+        <path d="M7.66 -6.43 A10 10 0 0 0 -7.66 -6.43" stroke="#ea4335"/>
+        <path d="M-7.66 -6.43 A10 10 0 0 0 -7.66 6.43" stroke="#fbbc05"/>
+        <path d="M-7.66 6.43 A10 10 0 0 0 7.66 6.43" stroke="#34a853"/>
+        <path d="M7.66 6.43 A10 10 0 0 0 10 0 H0" stroke="#4285f4"/>
+      </g></g>
+      <text x="76" y="40" fill="#4a4a4a" font-size="18" font-family="system-ui,sans-serif" font-weight="600">Google account</text>
+      <rect x="4" y="4" width="312" height="68" rx="11" fill="none" stroke="url(#tape)" stroke-width="8" filter="url(#sh)"/>
+      <g transform="rotate(-3 160 52)" filter="url(#sh)">
+        <rect x="-10" y="42" width="340" height="20" fill="#f7c600"/>
+        <rect x="-10" y="42" width="340" height="2.5" fill="#141414"/>
+        <rect x="-10" y="59.5" width="340" height="2.5" fill="#141414"/>
+        <text x="160" y="56.5" text-anchor="middle" fill="#141414" font-size="12" font-weight="800" letter-spacing="1" font-family="system-ui,sans-serif">ใช้งานไม่ได้  /  ใช้งานไม่ได้  /  ใช้งานไม่ได้</text>
+      </g>
+    </svg>
+  </button>
+
+  <button class="opt" id="tt" aria-label="เข้าสู่ระบบด้วยบัญชี TikTok">
+    <svg viewBox="0 0 320 76">
+      <rect x="1.5" y="1.5" width="317" height="73" rx="14" fill="url(#btnbg)" stroke="url(#btnline)" stroke-width="3"/>
+      <rect x="6" y="6" width="308" height="30" rx="10" fill="#fff" opacity=".04"/>
+      <g transform="translate(26 18) scale(1.7)">
+        <path id="ttn" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25f4ee" transform="translate(-.5 .5)"/>
+        <use href="#ttn" fill="#fe2c55" transform="translate(.5 -.5)"/>
+        <use href="#ttn" fill="#fff"/>
+      </g>
+      <text x="76" y="40" fill="#fff" font-size="18" font-family="system-ui,sans-serif" font-weight="600">TikTok account</text>
+      <path d="M284 30 l8 8 -8 8" fill="none" stroke="#5cb8ff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button class="opt dead" aria-disabled="true" aria-label="บัญชี Discord ใช้งานไม่ได้">
+    <svg viewBox="0 0 320 76">
+      <rect width="320" height="76" rx="14" fill="#000"/>
+      <g opacity=".55"><g transform="translate(20 15) scale(1.1)">
+        <path d="M4 8 C9 4 14 3 20 3 C26 3 31 4 36 8 C39 14 40 21 38 26 C33 29 29 29 27 28 L25.5 25.5 C23 26 17 26 14.5 25.5 L13 28 C11 29 7 29 2 26 C0 21 1 14 4 8 Z" fill="#5865f2"/>
+        <ellipse cx="13.5" cy="16.5" rx="3.4" ry="4" fill="#000"/><ellipse cx="26.5" cy="16.5" rx="3.4" ry="4" fill="#000"/>
+      </g></g>
+      <text x="76" y="40" fill="#4a4a4a" font-size="18" font-family="system-ui,sans-serif" font-weight="600">Discord account</text>
+      <rect x="4" y="4" width="312" height="68" rx="11" fill="none" stroke="url(#tape)" stroke-width="8" filter="url(#sh)"/>
+      <g transform="rotate(-3 160 52)" filter="url(#sh)">
+        <rect x="-10" y="42" width="340" height="20" fill="#f7c600"/>
+        <rect x="-10" y="42" width="340" height="2.5" fill="#141414"/>
+        <rect x="-10" y="59.5" width="340" height="2.5" fill="#141414"/>
+        <text x="160" y="56.5" text-anchor="middle" fill="#141414" font-size="12" font-weight="800" letter-spacing="1" font-family="system-ui,sans-serif">ใช้งานไม่ได้  /  ใช้งานไม่ได้  /  ใช้งานไม่ได้</text>
+      </g>
+    </svg>
+  </button>
+
+  <div id="msg" role="status"></div>
+  <button class="back" id="back">กลับ</button>
+</section>
+
+<!-- Screen 3: signed in -->
+<section class="screen" id="s3">
+  <svg class="avatar" id="avFallback" viewBox="0 0 110 110" aria-hidden="true">
+    <circle cx="55" cy="55" r="55" fill="#06101f"/>
+    <circle cx="55" cy="42" r="18" fill="#1e90ff"/>
+    <path d="M18 100 a37 37 0 0 1 74 0z" fill="#0a4fa8"/>
+  </svg>
+    <h1>ยินดีต้อนรับกลับมา</h1>
+  <p>เชื่อมต่อกับ TikTok แล้ว</p>
+  <button class="go" id="out">ออกจากระบบ</button>
+</section>
+
+<script>
+// ===== ตั้งค่าตรงนี้ =====
+var CLIENT_KEY   = 'ใส่ client key ของคุณ';
+var REDIRECT_URI = 'https://ชื่อคุณ.github.io/ชื่อrepo/'; // ต้องตรงกับที่ลงทะเบียนใน TikTok ทุกตัวอักษร
+// =========================
+(function(){
+  var $=function(i){return document.getElementById(i);};
+  var s=[$('s1'),$('s2'),$('s3')], rem=$('rem'), msg=$('msg');
+  function show(n){s.forEach(function(e,i){e.classList.toggle('on',i===n);});}
+  function say(t,err){msg.textContent=t;msg.className=err?'err':'';}
+  function get(st,k){try{return st.getItem(k);}catch(e){return null;}}
+  function put(st,k,v){try{st.setItem(k,v);}catch(e){}}
+  function del(st,k){try{st.removeItem(k);}catch(e){}}
+
+  if(get(localStorage,'remember')==='1'){rem.setAttribute('aria-checked','true');}
+  rem.onclick=function(){
+    var on=rem.getAttribute('aria-checked')!=='true';
+    rem.setAttribute('aria-checked',on?'true':'false');
+    put(localStorage,'remember',on?'1':'0');
+  };
+  $('next').onclick=function(){show(1);};
+  $('back').onclick=function(){say('');show(0);};
+
+  $('tt').onclick=function(){
+    var a=new Uint8Array(16); crypto.getRandomValues(a);
+    var state=Array.prototype.map.call(a,function(b){return ('0'+b.toString(16)).slice(-2);}).join('');
+    put(sessionStorage,'tt_state',state);
+    put(localStorage,'tt_state',state);
+    var u='https://www.tiktok.com/v2/auth/authorize/'
+      +'?client_key='+encodeURIComponent(CLIENT_KEY)
+      +'&scope=user.info.basic&response_type=code'
+      +'&redirect_uri='+encodeURIComponent(REDIRECT_URI)
+      +'&state='+state;
+    say('กำลังไปที่ TikTok...');
+    location.href=u;
+  };
+
+  $('out').onclick=function(){
+    del(localStorage,'tt_ok'); del(sessionStorage,'tt_ok'); say(''); show(0);
+  };
+
+  // กลับมาจาก TikTok?
+  var q=new URLSearchParams(location.search);
+  if(q.get('code')||q.get('error')){
+    var saved=get(sessionStorage,'tt_state')||get(localStorage,'tt_state');
+    var ok=q.get('code') && q.get('state') && q.get('state')===saved;
+    del(sessionStorage,'tt_state'); del(localStorage,'tt_state');
+    history.replaceState(null,'',location.pathname);
+    if(ok){
+      put(get(localStorage,'remember')==='1'?localStorage:sessionStorage,'tt_ok','1');
+    }else{
+      show(1); say('เข้าสู่ระบบกับ TikTok ไม่สำเร็จ ลองใหม่อีกครั้ง',true);
+    }
+  }
+  if(get(localStorage,'tt_ok')==='1'||get(sessionStorage,'tt_ok')==='1'){ show(2); }
+})();
+</script>
+</body>
+</html>
